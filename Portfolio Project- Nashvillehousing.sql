@@ -47,11 +47,6 @@ WHERE a.PropertyAddress is null
 
 -- Breaking out Address Into Individual Columns (Address, City, State)
 
-SELECT PropertyAddress
-FROM PortfolioProject.dbo.NashvilleHousing
---WHERE PropertyAddress is null
---ORDER BY ParcelID
-
 SELECT 
 SUBSTRING(PropertyAddress, 1, CHARINDEX(',', PropertyAddress) -1) AS Address,
 SUBSTRING(PropertyAddress, CHARINDEX(',', PropertyAddress) +1,	LEN(PropertyAddress)) AS Address
@@ -145,8 +140,6 @@ DROP COLUMN OwnerAddress, TaxDistrict, PropertyAddress
 ALTER TABLE PortfolioProject.dbo.NashvilleHousing
 DROP COLUMN SaleDate
 
-SELECT *
-FROM PortfolioProject.dbo.NashvilleHousing
 
 
 
