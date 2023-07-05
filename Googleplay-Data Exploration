@@ -1,0 +1,26 @@
+--Looking for free apps with rating > 4
+SELECT *
+FROM PortfolioProject.dbo.googleplaystore
+WHERE Rating > 4 AND Type = 'Free'
+
+-- WHEN Category has the letter "S" anywhere
+SELECT App, Category, Rating, Reviews, Price, Genres
+FROM PortfolioProject.dbo.googleplaystore
+WHERE Category LIKE '%S%'
+ORDER BY 3 DESC
+
+-- WHEN the App has starts with the letter "B" and Category does not have the letter "S" anywhere
+SELECT App, Category, Rating, Reviews, Price, Installs, [Content Rating]
+FROM PortfolioProject.dbo.googleplaystore
+WHERE App  LIKE 'B%' AND Category NOT LIKE '%S%'
+ORDER BY 4 DESC
+
+SELECT *
+FROM  PortfolioProject.dbo.googleplaystore
+WHERE Price is null
+
+SELECT App, Rating, Installs, COUNT(price) price_count
+FROM PortfolioProject.dbo.googleplaystore
+GROUP BY App, Rating, Installs
+ORDER BY 4 DESC
+
